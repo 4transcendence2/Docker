@@ -1,14 +1,13 @@
 FROM debian:11.5
 
+WORKDIR /home/frontend
 RUN apt-get update \
-	&& apt-get install -y vim curl git\
+	&& apt-get install -y vim curl\
   && curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
   && apt-get install -y nodejs \
 	&& apt-get clean -y \
-	&& apt-get autoremove -y \
-	&& mkdir /home/frontend \
-	&& npm install /home/frontend
-
+	&& apt-get autoremove -y
+COPY ./srcs	/home/frontend/
+RUN npm i
 EXPOSE 3000
-WORKDIR /home/frontend
-ENTRYPOINT npm start
+CMD npm start

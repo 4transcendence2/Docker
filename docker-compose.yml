@@ -1,0 +1,44 @@
+version: "3"
+services:
+  frontend:
+    image: frontend
+    container_name: frontend
+    build: app/frontend
+    init: true
+    ports:
+      - 80:3000
+    volumes:
+      - front:/home/frontend
+
+  # backend:
+  #   image: backend
+  #   container_name: backend
+  #   build: app/backend
+  #   init: true
+  #   volumes:
+  #     - back:/home/backend
+
+  # postgresql:
+  #   image: img_postgresql
+  #   volumes:
+  #     - db:/var/lib/postgresql
+
+volumes:
+  db:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /goinfre/hossong/transcend/db
+  front:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ${HOME}/goinfre/frontend
+  back:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ${HOME}/goinfre/backend

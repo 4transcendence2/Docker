@@ -10,13 +10,13 @@ services:
     volumes:
       - front:/home/frontend
 
-  # backend:
-  #   image: backend
-  #   container_name: backend
-  #   build: app/backend
-  #   init: true
-  #   volumes:
-  #     - back:/home/backend
+  backend:
+    image: backend
+    container_name: backend
+    build: app/backend
+    init: true
+    volumes:
+      - back:/home/backend
 
   # postgresql:
   #   image: img_postgresql

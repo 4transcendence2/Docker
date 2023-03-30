@@ -7,6 +7,8 @@ services:
     init: true
     ports:
       - 80:3000
+    volumes:
+      - front:/home/frontend
 
   # backend:
   #   image: backend

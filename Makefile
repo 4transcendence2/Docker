@@ -1,10 +1,11 @@
-FRONTEND = $(PWD)/app/frontend/srcs
+FRONTEND = $(HOME)/goinfre/frontend
 
 all :
 	-@git clone git@github.com:4transcendence2/frontend.git $(FRONTEND)
 	-@git -C $(FRONTEND) pull
 ## -@git clone [backend repository address] $(BACKEND)
 ## -@git -C $(BACKEND) pull
+	cp -r $(FRONTEND)/package.json ./app/frontend/
 	@docker compose build
 	@docker compose up -d
 	

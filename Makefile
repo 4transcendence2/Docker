@@ -8,7 +8,7 @@ all :
 	-@git -C $(BACKEND) pull
 	cp -f $(FRONTEND)/package.json ./app/frontend/
 	cp -f $(BACKEND)/package.json ./app/backend/
-	@docker compose build
+	@docker compose build --no-cache
 	@docker compose up -d
 	
 clean :

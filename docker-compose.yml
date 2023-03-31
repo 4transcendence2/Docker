@@ -2,9 +2,12 @@ version: "3"
 services:
   frontend:
     image: frontend
+    restart: always
     container_name: frontend
     build: app/frontend
     init: true
+    env_file:
+      - ./.env
     ports:
       - 80:3000
     volumes:
@@ -12,19 +15,26 @@ services:
 
   backend:
     image: backend
+    restart: always
     container_name: backend
     build: app/backend
     init: true
+    env_file:
+      - ./.env
+    ports:
+      - 81:80
     volumes:
       - back:/home/backend
 
+
   postgresql:
     image: postgres
-    container_name: postgresql
     restart: always
+    user: postgres
     volumes:
       - db:/var/lib/postgresql/data
-    env_file: ./.env
+    env_file:
+      - ./.env
     expose:
       - 5432
     healthcheck:
@@ -33,22 +43,23 @@ services:
       timeout: 5s
       retries: 5
 
+
 volumes:
   db:
     driver: local
     driver_opts:
       type: none
       o: bind
-      device: /goinfre/hossong/transcend/db
+      device: ${HOME}/Desktop/42seoul/db/
   front:
     driver: local
     driver_opts:
       type: none
       o: bind
-      device: ${HOME}/goinfre/frontend
+      device: ${HOME}/Desktop/42Seoul/frontend
   back:
     driver: local
     driver_opts:
       type: none
       o: bind
-      device: ${HOME}/goinfre/backend
+      device: ${HOME}/Desktop/42seoul/backend/

@@ -12,5 +12,4 @@ COPY ./package.json	/home
 RUN npm i
 WORKDIR /home/backend
 COPY ./start.sh /
-EXPOSE 3000
 CMD /bin/bash /start.sh

@@ -29,17 +29,18 @@ services:
 
   postgresql:
     image: postgres
+    container_name: postgresql
     restart: always
-    user: postgres
     volumes:
       - db:/var/lib/postgresql/data
     env_file:
       - ./.env
-    expose:
-      - 5432
+    ports:
+      - 5432:${POSTGRES_PORT}
+    user: ${POSTGRES_USERNAME}
     healthcheck:
-      test: [ "CMD", "pg_isready" ]
-      interval: 10s
+      test: [ "CMD", "pg_isready", "-U", "$POSTGRES_USERNAME", "-d", "$POSTGRES_DB" ]
+      interval: 5m
       timeout: 5s
       retries: 5
 
@@ -50,16 +51,16 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: ${HOME}/Desktop/42seoul/db/
+      device: ${HOME}/app/db
   front:
     driver: local
     driver_opts:
       type: none
       o: bind
-      device: ${HOME}/Desktop/42Seoul/frontend
+      device: ${HOME}/app/frontend
   back:
     driver: local
     driver_opts:
       type: none
       o: bind
-      device: ${HOME}/Desktop/42seoul/backend/
+      device: ${HOME}/app/backend

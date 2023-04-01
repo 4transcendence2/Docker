@@ -1,6 +1,6 @@
-FRONTEND = $(HOME)/goinfre/frontend
-BACKEND = $(HOME)/goinfre/backend
-
+FRONTEND = $(HOME)/app/frontend
+BACKEND = $(HOME)/app/backend
+DB = $(HOME)/app/db
 all :
 	-@git clone git@github.com:4transcendence2/frontend.git $(FRONTEND)
 	-@git -C $(FRONTEND) pull
@@ -8,8 +8,12 @@ all :
 	-@git -C $(BACKEND) pull
 	cp -f $(FRONTEND)/package.json ./app/frontend/
 	cp -f $(BACKEND)/package.json ./app/backend/
-	@docker compose build --no-cache
+	@mkdir -p $(DB)
+	@docker compose build
 	@docker compose up -d
+
+nocache:
+	@docker compose build --no-cache
 	
 clean :
 	docker compose down

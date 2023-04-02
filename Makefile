@@ -8,7 +8,6 @@ all :
 	-@git -C $(BACKEND) pull
 	cp -f $(FRONTEND)/package.json ./app/frontend/
 	cp -f $(BACKEND)/package.json ./app/backend/
-	@mkdir -p $(DB)
 	@docker compose build
 	@docker compose up -d
 
@@ -20,6 +19,7 @@ clean :
 	-docker images | awk 'NR > 1 { print $$3 }' | xargs docker rmi
 	-docker system prune -af
 	-docker volume ls | awk 'NR > 1 { print $$2 }' | xargs docker volume rm
+	rm -rf $(DB)
 
 prune :
 	rm -rf $(FRONTEND)

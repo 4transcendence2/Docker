@@ -1,5 +1,18 @@
 # Docker
 
+## development env
+- docker compose
+	- front
+		- OS : debian:11.5
+		- node.js : v18.15.0
+		- vite
+	- back
+		- OS : debian:11.5
+		- node.js : v18.15.0
+		- nestJS
+	- db
+		- postgresql : 
+
 ## 클러스터의 도커 이용 시
 - https://github.com/alexandregv/42toolbox 이곳에서 클론 후
 - 42toolbox 디렉토리 ```init_docker.sh``` 실행
@@ -13,3 +26,11 @@
 	- docker compose down
 	- 프로젝트 내 브랜치 이동 git checkout xxx_branch
 	- docker compose up -d
+
+
+
+## 마무리 단계 확인 목록
+- 각 컨테이너(dockerfile) 디렉토리 위치에 소스코드 포함시키기
+- docker compose에 노출된 포트가 하나인지 확인
+- makefile에 git clone하는 라인 지우기
+- 

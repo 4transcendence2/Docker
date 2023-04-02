@@ -2,9 +2,11 @@ version: "3"
 services:
   frontend:
     image: frontend
-    restart: always
     container_name: frontend
     build: app/frontend
+    depends_on:
+      - backend
+    restart: always
     init: true
     env_file:
       - ./.env
@@ -15,9 +17,11 @@ services:
 
   backend:
     image: backend
-    restart: always
     container_name: backend
     build: app/backend
+    depends_on:
+      - postgresql
+    restart: always
     init: true
     env_file:
       - ./.env
@@ -31,6 +35,7 @@ services:
     image: postgres
     container_name: postgresql
     restart: always
+    init: true
     volumes:
       - db:/var/lib/postgresql/data
     env_file:
@@ -44,14 +49,13 @@ services:
       timeout: 5s
       retries: 5
 
-
 volumes:
   db:
-    driver: local
-    driver_opts:
-      type: none
-      o: bind
-      device: ${HOME}/app/db
+    # driver: local
+    # driver_opts:
+    #   type: none
+    #   o: bind
+      # device: ${HOME}/app/db
   front:
     driver: local
     driver_opts:

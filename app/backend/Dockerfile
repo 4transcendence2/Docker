@@ -2,7 +2,7 @@ FROM debian:11.5
 
 WORKDIR /home
 RUN apt-get update \
-	&& apt-get install -y curl git\
+	&& apt-get install -y curl git vim\
   && curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
   && apt-get install -y nodejs \
 	&& apt-get clean -y \

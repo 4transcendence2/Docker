@@ -27,10 +27,16 @@
 	- 프로젝트 내 브랜치 이동 git checkout xxx_branch
 	- docker compose up -d
 
-
+## 주의
+- 프로젝트안에서 `npm i`를 이용하는 경우
+	- node_modules 링크가 지워지고 실제 node_modules의 디렉토리와 파일이 다운로드됨(용량증가)
+	- 용량이 상관없다면 아무 지장 없음. 
+- 프로젝트가 지워지거나 프로젝트 내부에 node_modules 를 지우는 경우(클러스터 한정)
+	- 다시 docker compose up 를 하면 프로젝트 경로에 node_modules가 생성되지 않는 문제
+		- 해결 : docker compose down -> init_docker.sh -> docker compose up
+		- init_docker.sh 는 도커를 지우고 심볼릭 링크 처리하는 스크립트
 
 ## 마무리 단계 확인 목록
 - 각 컨테이너(dockerfile) 디렉토리 위치에 소스코드 포함시키기
 - docker compose에 노출된 포트가 하나인지 확인
 - makefile에 git clone하는 라인 지우기
-- 

@@ -14,6 +14,8 @@ services:
       - 80:3000
     volumes:
       - front:/home/frontend
+    # networks:
+    #   mynetwork:
 
   backend:
     image: backend
@@ -29,7 +31,9 @@ services:
       - 81:80
     volumes:
       - back:/home/backend
-
+    # networks:
+    #   mynetwork:
+    #     ipv4_address: 172.26.0.10
 
   postgresql:
     image: postgres
@@ -48,6 +52,8 @@ services:
       interval: 5m
       timeout: 5s
       retries: 5
+    # networks:
+    #   mynetwork:
 
 volumes:
   db:
@@ -68,3 +74,10 @@ volumes:
       type: none
       o: bind
       device: ${HOME}/app/backend
+
+# networks:
+#   mynetwork:
+#     ipam:
+#       driver: default
+#       config:
+#         - subnet: 172.26.0.0/16

@@ -8,8 +8,9 @@ RUN apt-get update \
 	&& apt-get clean -y \
 	&& apt-get autoremove -y
 ENV LC_ALL=C.UTF-8
-COPY ./package.json	/home
+COPY ./package*.json	/home
 RUN npm i
 WORKDIR /home/backend
 COPY ./start.sh /
+EXPOSE 80
 CMD /bin/bash /start.sh

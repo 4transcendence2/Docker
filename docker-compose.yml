@@ -57,11 +57,11 @@ services:
 
 volumes:
   db:
-    # driver: local
-    # driver_opts:
-    #   type: none
-    #   o: bind
-      # device: ${HOME}/app/db
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ${HOME}/app/db
   front:
     driver: local
     driver_opts:

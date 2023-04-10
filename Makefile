@@ -6,8 +6,8 @@ all :
 	-@git -C $(FRONTEND) pull
 	-@git clone git@github.com:4transcendence2/backend.git $(BACKEND)
 	-@git -C $(BACKEND) pull
-	cp -f $(FRONTEND)/package.json ./app/frontend/
-	cp -f $(BACKEND)/package.json ./app/backend/
+	cp -f $(FRONTEND)/package*.json ./app/frontend/
+	cp -f $(BACKEND)/package*.json ./app/backend/
 	@mkdir -p $(DB)
 	@docker-compose build --no-cache
 	@docker-compose up -d

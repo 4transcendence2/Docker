@@ -3,11 +3,11 @@
 ## development env
 - docker compose
 	- front
-		- OS : debian:11.5
+		- OS : debian:stable
 		- node.js : v18.15.0
 		- vite
 	- back
-		- OS : debian:11.5
+		- OS : debian:stable
 		- node.js : v18.15.0
 		- nestJS
 	- db
@@ -19,6 +19,9 @@
 - ~/goinfre/docker 확인
 - 만약 volumes 관련해서 경로를 찾을 수 없다면 도커 데탑 설정에 file sharing 부분에 해당 경로를 추가해야함
   ![image](https://user-images.githubusercontent.com/62678380/228708250-b235a8fa-4d16-4b64-91e5-3059d554bca4.png)
+- 이미지 빌드가 너무 느리다면 dns를 바꿔보자
+  <img width="1243" alt="image" src="https://user-images.githubusercontent.com/62678380/230827022-ce3e58cb-67dc-4654-808f-b2edb21e1df9.png">
+
 
 ## 깃 프로젝트
 - 볼륨 마운팅 되어있는 프로젝트 내 브랜치 이동하기 전 주의사항

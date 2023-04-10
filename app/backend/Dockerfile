@@ -1,4 +1,4 @@
-FROM debian:11.5
+FROM debian:stable
 
 WORKDIR /home
 RUN apt-get update \

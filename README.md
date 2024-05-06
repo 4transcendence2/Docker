@@ -1,5 +1,9 @@
 # Docker
 
+## 구성도
+![image](https://github.com/4transcendence2/Docker/assets/62678380/3d4f9f0b-9104-48e7-98ee-e817817c2692)
+
+
 ## 클러스터의 도커 이용 시
 - https://github.com/alexandregv/42toolbox 이곳에서 클론 후
 - 42toolbox 디렉토리 ```init_docker.sh``` 실행

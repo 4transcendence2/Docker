@@ -1,7 +1,9 @@
 # Docker
 
 ## 구성도
-![image](https://github.com/4transcendence2/Docker/assets/62678380/3d4f9f0b-9104-48e7-98ee-e817817c2692)
+![image](https://github.com/4transcendence2/Docker/assets/62678380/614287b4-394c-460b-a1e4-fdf3d625164c)
+
+
 
 
 ## 클러스터의 도커 이용 시
